@@ -1,0 +1,17 @@
+# Hexo robots.txt
+User-agent: *
+Allow: /
+Allow: /archives/
+Allow: /categories/
+Allow: /tags/
+
+Disallow: /vendors/
+Disallow: /lib/
+Disallow: /images/
+Disallow: /js/
+Disallow: /css/
+Disallow: /fonts/
+Disallow: /fancybox/
+
+Sitemap: https://boris1993.tk/sitemap.xml
+Sitemap: https://boris1993.tk/baidusitemap.xml

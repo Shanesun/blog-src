@@ -87,3 +87,8 @@ feed:
   path: rss2.xml
   limit: 20
   hub:
+
+sitemap: 
+  path: sitemap.xml
+baidusitemap:
+  path: baidusitemap.xml
