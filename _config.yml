@@ -55,6 +55,10 @@ index_generator:
 # Category & Tag
 default_category: uncategorized
 category_map:
+  前端: front-end
+  Java: java
+  Mainframe: mainframe
+  其他: others
 tag_map:
 
 # Date / Time format
