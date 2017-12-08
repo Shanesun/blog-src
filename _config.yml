@@ -58,6 +58,7 @@ category_map:
   前端: front-end
   Java: java
   Mainframe: mainframe
+  模拟飞行: flight-sim
   其他: others
 tag_map:
 
