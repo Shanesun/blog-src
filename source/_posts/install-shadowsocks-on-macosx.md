@@ -153,7 +153,19 @@ echo "http://localhost:8080/pac/autoproxy.pac"
 ```
 
 ## 配置系统代理
+
 将系统代理的代理自动配置(Automatic Proxy Configuration)启用，URL填写**http://localhost:8080/pac/autoproxy.pac**(此处的端口号需按照你实际的nginx配置填写，默认为8080)
 
 ## 检查是否成功生效
+
 打开Safari，访问一个测试站点，如[Google](https://www.google.com)，如能正常访问则说明配置成功。
+
+## 配置定时更新PAC文件
+
+执行 **crontab -e** 命令编辑crontab，加入如下内容：
+
+```
+0 12 * * * 生成PAC文件的脚本的绝对路径，如/tmp/generate-pac.sh
+```
+
+crontab的写法可以参照[Schedule jobs with crontab on Mac OS X](https://ole.michelsen.dk/blog/schedule-jobs-with-crontab-on-mac-osx.html)
