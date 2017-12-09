@@ -2,7 +2,7 @@
 title: Ubuntu中安装ShadowSocks及混淆插件的脚本
 date: 2017-11-29 17:10:09
 tags:
-- ShadowSocks
+- Shadowsocks
 - Simple Obfs
 categories: 其他
 ---
