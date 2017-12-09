@@ -93,4 +93,67 @@ brew services
 brew services start shadowsocks-libev
 ```
 
-至此在macOS X上安装Shadowsocks和simple-obfs结束，接下来就可以使用SOCKS或HTTP代理客户端使用该代理。
+至此在macOS X上安装Shadowsocks和simple-obfs结束，接下来就可以使用SOCKS或HTTP代理客户端使用该代理。如果要配置系统使用PAC，可以继续进行下列步骤。
+
+# 安装nginx
+
+因为macOS的PAC仅接受HTTP位置，所以需要安装nginx来将本机作为一个HTTP服务器。
+
+```bash
+brew install nginx
+```
+
+# 生成PAC文件
+
+## 安装PAC生成器
+
+```bash
+git clone https://github.com/vangie/gfwlist2pac.git
+```
+
+## 修改gfwlist2pac配置文件
+
+```bash
+pushd gfwlist2pac
+vim gfwlist2pac.cfg
+```
+
+修改如下几行内容：
+
+```
+gfwUrl = https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt
+
+; 下面两行的IP地址和端口根据本机Shadowsocks配置修改
+gfwProxy = SOCKS5 127.0.0.1:1080
+pacProxy = SOCKS 127.0.0.1:1080; PROXY 127.0.0.1:1080; DIRECT;
+```
+
+## 编写脚本实现自动生成PAC并自动复制到nginx的html目录
+
+```bash
+#!/bin/bash
+  
+echo "Generating PAC file..."
+
+./gfwlist2pac.py
+
+if [ ! -d "/usr/local/opt/nginx/html/pac" ]; then
+    echo "Creating pac folder under nginx html folder..."
+    pushd /usr/local/opt/nginx/html
+    mkdir pac
+    popd
+fi
+
+echo "Copying PAC file to nginx html folder..."
+
+cp autoproxy.pac /usr/local/opt/nginx/html/pac/autoproxy.pac
+
+echo "You can now set your PAC file address to "
+echo "http://localhost:8080/pac/autoproxy.pac"
+```
+
+## 配置系统代理
+将系统代理的代理自动配置(Automatic Proxy Configuration)启用，URL填写**http://localhost:8080/pac/autoproxy.pac**(此处的端口号需按照你实际的nginx配置填写，默认为8080)
+
+## 检查是否成功生效
+打开Safari，访问一个测试站点，如[Google](https://www.google.com)，如能正常访问则说明配置成功。
