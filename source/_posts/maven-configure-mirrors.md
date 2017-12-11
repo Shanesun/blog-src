@@ -3,7 +3,6 @@ title: 为Maven配置阿里云镜像和代理服务器
 date: 2017-12-11 14:41:50
 tags:
 - Maven
-- Aliyun Mirror
 categories: Java
 ---
 Maven中央仓库在国内的速度简直是感人，好在阿里云提供了Maven中央仓库的镜像，配置方法在此纪录备用。
