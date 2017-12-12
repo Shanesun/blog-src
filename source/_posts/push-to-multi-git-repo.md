@@ -55,7 +55,7 @@ git push origin --all
 ```ini
 # 假设当前的远程仓库名为 origin
 [remote "origin"]
-	url = https://github.com/username/blog-src.git
+	url = https://github.com/username/github1.git
 	fetch = +refs/heads/*:refs/remotes/github/*
 	pushurl = https://github.com/username/github1.git
 	pushurl = https://github.com/username/github2.git
