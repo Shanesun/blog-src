@@ -84,6 +84,8 @@ theme: next
 deploy:
 - type: git
   repo: https://github.com/boris1993/boris1993.github.io.git
+- type: git
+  repo: https://gitee.com/boris1993/boris1993.git
 - type: heroku
   repo: https://git.heroku.com/boris-heroku-blog.git
 

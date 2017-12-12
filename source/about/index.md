@@ -13,9 +13,8 @@ date: 2017-11-19 02:01:51
 同时也是模拟飞行中的一个 A320 飞行员。我的飞行视频可以在 [我的Bilibili空间](https://space.bilibili.com/3633374) 找到。
 
 # 在哪里可以看到这个博客
-在下的个人博客可以在以下三个位置访问到：
+在下的个人博客可以在以下位置访问到：
 - 我的个人主机 [(HTTP)](http://boris1993.tk) [(HTTPS)](https://boris1993.tk)
 - [GitHub Pages](https://boris1993.github.io/)
+- [码云Pages](http://boris1993.gitee.io/)
 - [Heroku](https://boris-heroku-blog.herokuapp.com/)
-
-在 GitHub Pages 和 Heroku 上的文章可以保证时刻处于最新状态，在个人主机上的站点可能更新会有滞后。
