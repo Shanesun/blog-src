@@ -97,3 +97,5 @@ sitemap:
   path: sitemap.xml
 baidusitemap:
   path: baidusitemap.xml
+
+all_minifier: true
