@@ -53,7 +53,7 @@ index_generator:
   order_by: -date
   
 # Category & Tag
-default_category: uncategorized
+default_category: others
 category_map:
   前端: front-end
   Java: java
