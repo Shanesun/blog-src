@@ -400,14 +400,14 @@ valine:
 
 # Google Webmaster tools verification setting
 # See: https://www.google.com/webmasters/
-#google_site_verification:
+google_site_verification: j8BBcyvaAyc6nZUXy6FLTrPGQYNOgArMxNYJJYZFsmo
 
 # Google Analytics
-#google_analytics:
+google_analytics: UA-111547546-1
 
 # Bing Webmaster tools verification setting
 # See: https://www.bing.com/webmaster/
-#bing_site_verification:
+bing_site_verification: DCD6E61D797D51CEBCD35C313C708277
 
 # Yandex Webmaster tools verification setting
 # See: https://webmaster.yandex.ru/
