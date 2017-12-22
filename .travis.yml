@@ -24,4 +24,5 @@ script:
 - hexo generate
 
 after_success:
+- sed -i "s/__GITHUB_TOKEN__/${__GITHUB_TOKEN__}/" _config.yml
 - hexo deploy
