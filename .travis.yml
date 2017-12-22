@@ -25,4 +25,6 @@ script:
 
 after_success:
 - sed -i "s/__GITHUB_TOKEN__/${GITHUB_TOKEN}/" _config.yml
+- sed -i "s/__GITEE_TOKEN__/${GITEE_TOKEN}/" _config.yml
+- sed -i "s/__HEXO_TOKEN__/${HEXO_TOKEN}/" _config.yml
 - hexo deploy
