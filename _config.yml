@@ -85,16 +85,13 @@ theme: next
 deploy:
 # The GitHub pages repo
 - type: git
-  repo: https://__GITHUB_TOKEN__@github.com/boris1993/boris1993.github.io.git
-  #  repo: https://github.com/boris1993/boris1993.github.io.git
+  repo: https://github.com/boris1993/boris1993.github.io.git
 # The Gitee pages repo
 - type: git
-  repo: https://__GITEE_TOKEN__@gitee.com/boris1993/boris1993.git
-  #  repo: https://gitee.com/boris1993/boris1993.git
+  repo: https://gitee.com/boris1993/boris1993.git
 # The Heroku site
 - type: heroku
-  repo: https://__HEXO_TOKEN__@git.heroku.com/boris-heroku-blog.git
-  #  repo: https://git.heroku.com/boris-heroku-blog.git
+  repo: https://git.heroku.com/boris-heroku-blog.git
 
 feed:
   type: rss2
