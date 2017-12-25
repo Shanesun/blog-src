@@ -5,7 +5,7 @@ tags:
 - Git
 categories: 工具
 ---
-有时候我们可能会需要为一个Git仓库指定多个远程仓库，比如同时链接多个代码托管平台的账号，那么可以参考本文所述的方法配置。
+有时候我们可能会需要push到多个远程仓库，比如同时链接多个代码托管平台的账号，那么可以参考本文所述的方法配置。
 
 保险起见在操作之前请先做好备份工作，毕竟数据无价。
 
@@ -42,10 +42,15 @@ git pull github2 master
 git remote add origin https://github.com/username/github1.git
 
 # 然后添加另一个
-git remote set-url -add origin https://github.com/username/github2.git
+git remote set-url --add --push origin https://github.com/username/github2.git
+
+# 检查远程仓库配置
+git remote -v
+
+# 若配置正确，则结果应当包含一个fetch路径和两个push路径
 
 # 向所有远程仓库推送
-git push origin --all
+git push origin master
 ```
 
 # 方法3 - 直接修改.git/config文件
@@ -55,15 +60,15 @@ git push origin --all
 ```ini
 # 假设当前的远程仓库名为 origin
 [remote "origin"]
-	url = https://github.com/username/github1.git
-	fetch = +refs/heads/*:refs/remotes/github/*
-	pushurl = https://github.com/username/github1.git
-	pushurl = https://github.com/username/github2.git
+    url = https://github.com/username/github1.git
+    fetch = +refs/heads/*:refs/remotes/github/*
+    pushurl = https://github.com/username/github1.git
+    pushurl = https://github.com/username/github2.git
 ```
 
 然后直接使用
 
-```bash 
+```bash
 git push origin master
 ```
 
