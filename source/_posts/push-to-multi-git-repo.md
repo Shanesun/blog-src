@@ -41,7 +41,8 @@ git pull github2 master
 # 添加一个远程仓库
 git remote add origin https://github.com/username/github1.git
 
-# 然后添加另一个
+# 然后分别设定push URL
+git remote set-url --add --push origin https://github.com/username/github1.git
 git remote set-url --add --push origin https://github.com/username/github2.git
 
 # 检查远程仓库配置
