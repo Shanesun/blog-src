@@ -10,6 +10,7 @@ categories: 其他
 该脚本目前仅能用于Ubuntu Linux。在Ubuntu Server 17.04下测试通过。
 另外您可以在[我的Gist](https://gist.github.com/boris1993/0031187d7f0df73f049d3adaa56bb279)中下载该脚本
 <!--more-->
+
 ```bash
 #!/bin/bash
 
