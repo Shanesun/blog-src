@@ -83,13 +83,10 @@ theme: next
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-# The GitHub pages repo
 - type: git
-  repo: https://github.com/boris1993/boris1993.github.io.git
-# The Gitee pages repo
-- type: git
-  repo: https://gitee.com/boris1993/boris1993.git
-# The Heroku site
+  repo: 
+    github: https://github.com/boris1993/boris1993.github.io.git
+    gitee: https://gitee.com/boris1993/boris1993.git
 - type: heroku
   repo: https://git.heroku.com/boris-heroku-blog.git
 
