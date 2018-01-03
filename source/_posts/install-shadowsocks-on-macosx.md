@@ -124,7 +124,7 @@ brew install nginx
 
 ## 配置系统代理
 
-将系统代理的代理自动配置(Automatic Proxy Configuration)启用，URL填写**http://localhost:8080/pac/autoproxy.pac**(此处的端口号需按照你实际的 nginx 配置填写，默认为 8080；服务器路径也需要按照 PAC 文件的实际位置修改，此处的位置与上一步的配置相对应。)
+将系统代理的代理自动配置(Automatic Proxy Configuration)启用，URL填写**http://localhost:8080/pac/autoproxy.pac** (此处的端口号需按照你实际的 nginx 配置填写，默认为 8080；服务器路径也需要按照 PAC 文件的实际位置修改，此处的位置与上一步的配置相对应。)
 
 ## 检查是否成功生效
 
