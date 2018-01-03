@@ -10,19 +10,19 @@ categories: 其他
 
 <!--more-->
 
-# 安装HomeBrew
+# 安装 HomeBrew
 
 ```bash
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-# 安装Shadowsocks
+# 安装 Shadowsocks
 
 ```bash
 brew install shadowsocks-libev
 ```
 
-# 安装simple-obfs
+# 安装 simple-obfs
 
 ```bash
 brew install simple-obfs
@@ -41,13 +41,16 @@ vim config.json
 
 ```json
 {
-        "server":"SERVER_ADDRESS",
-        "server_port":3128,
-        "local_port":1080,
-        "password":"PASSWORD",
-        "method":"chacha20-ietf-poly1305",
-        "plugin":"/usr/local/bin/obfs-local",
-        "plugin_opts":"obfs=http;obfs-host=cloudfront.net"
+  "server":"SERVER_ADDRESS",
+  "server_port":3128,
+  "local_address":"0.0.0.0",
+  "local_port":1080,
+  "password":"PASSWORD",
+  "method":"chacha20-ietf-poly1305",
+  "fast_open":true,
+  "interface":"en0",
+  "plugin":"/usr/local/bin/obfs-local",
+  "plugin_opts":"obfs=http;obfs-host=cloudfront.net"
 }
 ```
 
@@ -74,6 +77,10 @@ vim /usr/local/opt/shadowsocks-libev/homebrew.mxcl.shadowsocks-libev.plist
     <true/>
     <key>KeepAlive</key>
     <true/>
+    <key>StandardOutPath</key>
+    <string>/tmp/shadowsocks/shadowsocks.log</string>
+    <key>StandardErrorPath</key>
+    <string>/tmp/shadowsocks/shadowsocks.err</string>
   </dict>
 </plist>
 
@@ -87,7 +94,7 @@ vim /usr/local/opt/shadowsocks-libev/homebrew.mxcl.shadowsocks-libev.plist
 brew services
 ```
 
-## 然后启用Shadowsocks的自启动配置文件
+## 然后启用 Shadowsocks 的自启动配置文件
 
 ```bash
 brew services start shadowsocks-libev
@@ -95,7 +102,7 @@ brew services start shadowsocks-libev
 
 至此在macOS X上安装Shadowsocks和simple-obfs结束，接下来就可以使用SOCKS或HTTP代理客户端使用该代理。如果要配置系统使用PAC，可以继续进行下列步骤。
 
-# 安装nginx
+# 安装 nginx
 
 因为macOS的PAC仅接受HTTP位置，所以需要安装nginx来将本机作为一个HTTP服务器。
 
@@ -103,69 +110,22 @@ brew services start shadowsocks-libev
 brew install nginx
 ```
 
-# 生成PAC文件
+# 使用 PAC 文件配置系统代理
 
-## 安装PAC生成器
+## 使用 ProxyOmega 生成PAC脚本
 
-```bash
-git clone https://github.com/vangie/gfwlist2pac.git
-```
+使用Chrome插件SwitchyOmega生成PAC文件。同时，使用该插件配置Chrome浏览器的代理。
 
-## 修改gfwlist2pac配置文件
+具体生成方法为：
 
-```bash
-pushd gfwlist2pac
-vim gfwlist2pac.cfg
-```
-
-修改如下几行内容：
-
-```
-gfwUrl = https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt
-
-; 下面两行的IP地址和端口根据本机Shadowsocks配置修改
-gfwProxy = SOCKS5 127.0.0.1:1080
-pacProxy = SOCKS 127.0.0.1:1080; PROXY 127.0.0.1:1080; DIRECT;
-```
-
-## 编写脚本实现自动生成PAC并自动复制到nginx的html目录
-
-```bash
-#!/bin/bash
-  
-echo "Generating PAC file..."
-
-./gfwlist2pac.py
-
-if [ ! -d "/usr/local/opt/nginx/html/pac" ]; then
-    echo "Creating pac folder under nginx html folder..."
-    pushd /usr/local/opt/nginx/html
-    mkdir pac
-    popd
-fi
-
-echo "Copying PAC file to nginx html folder..."
-
-cp autoproxy.pac /usr/local/opt/nginx/html/pac/autoproxy.pac
-
-echo "You can now set your PAC file address to "
-echo "http://localhost:8080/pac/autoproxy.pac"
-```
+1. 进入SwitchyOmega中Shadowsocks的配置条目
+2. 在配置好协议、服务器地址、端口、以及Bypass List后，点击右上角的“生成PAC”(Export PAC)
+3. 将生成的 PAC 文件复制到nginx的html目录，如“html/pac/autoproxy.pac”
 
 ## 配置系统代理
 
-将系统代理的代理自动配置(Automatic Proxy Configuration)启用，URL填写**http://localhost:8080/pac/autoproxy.pac**(此处的端口号需按照你实际的nginx配置填写，默认为8080)
+将系统代理的代理自动配置(Automatic Proxy Configuration)启用，URL填写**http://localhost:8080/pac/autoproxy.pac**(此处的端口号需按照你实际的 nginx 配置填写，默认为 8080；服务器路径也需要按照 PAC 文件的实际位置修改，此处的位置与上一步的配置相对应。)
 
 ## 检查是否成功生效
 
 打开Safari，访问一个测试站点，如[Google](https://www.google.com)，如能正常访问则说明配置成功。
-
-## 配置定时更新PAC文件
-
-执行 **crontab -e** 命令编辑crontab，加入如下内容：
-
-```
-0 12 * * * 生成PAC文件的脚本的绝对路径，如/tmp/generate-pac.sh
-```
-
-crontab的写法可以参照[Schedule jobs with crontab on Mac OS X](https://ole.michelsen.dk/blog/schedule-jobs-with-crontab-on-mac-osx.html)
