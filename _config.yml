@@ -87,8 +87,8 @@ deploy:
   repo: 
     github: git@github.com:boris1993/boris1993.github.io.git
     gitee: git@gitee.com:boris1993/boris1993.git
-- type: heroku
-  repo: https://git.heroku.com/boris-heroku-blog.git
+    #- type: heroku
+    #  repo: https://git.heroku.com/boris-heroku-blog.git
 
 feed:
   type: rss2
