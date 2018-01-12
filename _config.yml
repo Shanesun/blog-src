@@ -83,7 +83,7 @@ theme: next
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-- type: git
+  type: git
   repo: 
     github: git@github.com:boris1993/boris1993.github.io.git
     gitee: git@gitee.com:boris1993/boris1993.git
