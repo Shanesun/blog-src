@@ -18,7 +18,7 @@ date: 2017-11-19 02:01:51
 
 在下的个人博客可以在以下位置访问到：
 
-- 我的个人主机 [(HTTPS)](https://www.boris1993.tk)
+- [我的个人主机](https://www.boris1993.tk)
 - [GitHub Pages](https://boris1993.github.io/)
 - [码云Pages](https://boris1993.gitee.io/)
 - [Heroku](https://boris-heroku-blog.herokuapp.com/)
