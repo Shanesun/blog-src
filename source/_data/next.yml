@@ -58,10 +58,7 @@ bing_site_verification: DCD6E61D797D51CEBCD35C313C708277
 
 local_search:
   enable: true
-  # if auto, trigger search by changing input
-  # if manual, trigger search by pressing enter key or search button
   trigger: auto
-  # show top n results per article, show all results by setting to -1
   top_n_per_article: 1
 
 fancybox: true
