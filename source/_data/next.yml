@@ -1,0 +1,71 @@
+favicon:
+  small: /images/common/favicon-16x16.png
+  medium: /images/common/favicon-32x32.png
+  apple_touch_icon: /images/common/apple-touch-icon.png
+  safari_pinned_tab: /images/common/safari-pinned-tab.svg
+  android_manifest: /images/common/manifest.json
+  ms_browserconfig: /images/common/browserconfig.xml
+
+keywords: "Hexo, NexT, boris1993, blog"
+
+footer:
+  since: 2017
+
+canonical: true
+seo: true
+index_with_subtitle: true
+
+menu:
+  home: / || home
+  about: /about/ || user
+  tags: /tags/ || tags
+  categories: /categories/ || th
+  archives: /archives/ || archive
+
+scheme: Pisces
+
+social:
+  GitHub: https://github.com/boris1993 || github
+  StackOverflow: https://stackoverflow.com/users/3833858/boris1993 || stack-overflow
+
+social_icons:
+  enable: true
+  icons_only: false
+  transition: false
+
+avatar: /images/common/avatar.jpeg
+
+creative_commons: by-sa
+
+b2t: true
+
+scrollpercent: true
+
+scroll_to_more: false
+
+post_copyright:
+  enable: true
+  license: CC BY-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+
+highlight_theme: night eighties
+
+google_site_verification: j8BBcyvaAyc6nZUXy6FLTrPGQYNOgArMxNYJJYZFsmo
+
+google_analytics: UA-111547546-1
+
+bing_site_verification: DCD6E61D797D51CEBCD35C313C708277
+
+local_search:
+  enable: true
+  # if auto, trigger search by changing input
+  # if manual, trigger search by pressing enter key or search button
+  trigger: auto
+  # show top n results per article, show all results by setting to -1
+  top_n_per_article: 1
+
+fancybox: true
+
+pace: true
+pace_theme: pace-theme-minimal
+
