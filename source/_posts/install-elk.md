@@ -161,5 +161,3 @@ vm.max_map_count=262144
 
 # 参考文献
 + [Elastic Search Installation Guide](https://www.elastic.co/guide/en/elasticsearch/reference/current/_installation.html)
-+ [Logstash Installation Guide]()
-+ [Kibana Installation Guide]()
