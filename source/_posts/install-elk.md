@@ -1,14 +1,12 @@
 ---
-title: 搭建ELK日志平台
+title: 搭建ELK日志平台 - 安装Elastic Search
 date: 2018-02-04 16:50:31
 tags:
 - ELK
 - Elastic Search
-- Logstash
-- Kibana
-categories: Java
+categories: DevOps
 ---
-最近搭建了一次ELK日志平台，在此记录一下安装步骤
+最近搭建了一次ELK日志平台，在此记录一下安装步骤。由于本次模拟的是服务器不能连接互联网的情况，所以全部安装步骤皆使用RPM或tar包的方式安装。
 
 <!--more-->
 
@@ -16,43 +14,23 @@ categories: Java
 
 首先这套平台是基于Java的，所以Java运行环境当然是不能少。但因为这上面不涉及Java的开发，所以不需要装JDK，装JRE就够了，还能省下一些磁盘空间。我这里选择JRE8u161。
 
-我这次选择使用tar包手动安装。
-
-首先，将tar包复制到/opt目录并解压。
+我这次选择使用RPM包安装。
 
 ```bash
-sudo cp jre-8u161-linux-x64.tar.gz /opt/
-cd /opt
-sudo tar xvzf jre-8u161-linux-x64.tar.gz
-
-# 养成好习惯，用不着的文件及时清理
-sudo rm jre-8u161-linux-x64.tar.gz
+sudo rpm -ivh jre-8u161-linux-x64.rpm
 ```
 
-然后配置环境变量
+安装完毕后，验证安装是否成功：
 
 ```bash
-# 当然这里你可以随意选择你喜欢的编辑器，你甚至可以使用Emacs
-sudo vi /etc/profile
-```
-
-增加如下内容
-
-```profile
-export JAVA_HOME=/opt/jre1.8.0_161
-
-# 我个人习惯把PATH的设定放在最下面
-export PATH=$JAVA_HOME/bin:$PATH
-```
-
-然后重新载入/etc/profile使配置生效，并检查Java环境是否配置正确
-
-```bash
-source /etc/profile
+# 检验当前用户下是否安装成功
 java -version
+
+# 检验sudo环境下是否安装成功
+sudo java -version
 ```
 
-输出如下内容
+若都输出如下内容则说明安装成功：
 
 ```
 java version "1.8.0_161"
@@ -64,24 +42,24 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.161-b12, mixed mode)
 
 # 安装Elastic Search
 
-Elastic Search需要调整文件描述符大于65535、最大线程数大于4096、以及vm.max_map_count大于262144
+## 安装过程
 
+### 使用RPM包安装
+
+直接使用rpm命令安装该RPM包
+
+```bash
+sudo rpm --install elasticsearch-6.2.2.rpm
 ```
-# vim /etc/security/limits.conf
 
-#Insert following lines
-* hard nofile 65536
-* soft nofile 65536
-* hard nproc  4096
-* soft nproc  4096
+CentOS 7使用systemd管理开机自启动项，而且安装过程已经配置好针对systemd的启动脚本，使用如下命令激活
 
-# vim /etc/sysctl.conf
-
-#Insert following line
-vm.max_map_count=262144
-
-# sysctl -p
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable elasticsearch.service
 ```
+
+### 使用tar.gz包安装
 
 首先新建一个名为elk的用户，用于运行ELK平台
 
@@ -89,13 +67,97 @@ vm.max_map_count=262144
 useradd -m elk
 ```
 
-然后将Elastic Search的安装包复制到elk的用户目录并解压，进入Elastic Search的bin目录后运行
+下载好Elastic Search的安装包，将其复制到/opt并解压，然后试运行
+
+```bash
+sudo cp elasticsearch-6.1.3.tar.gz /opt
+cd /opt
+sudo tar xvzf elasticsearch-6.1.3.tar.gz
+
+# 需要将Elastic Search目录的所有权设为将要运行该软件的用户
+# Elastic Search不允许以root用户运行，安全方面亦不建议以root权限运行程序
+sudo chown -R elk:elk elasticsearch-6.1.3
+
+cd elasticsearch-6.1.3/bin
+./elelasticsearch
+```
+
+启动成功后，在另一终端使用curl尝试连接Elastic Search
+
+```bash
+curl http://127.0.0.1:9200
+```
+
+若有如下返回，则说明Elastic Search启动成功
+
+```json
+{
+  "name" : "LWmSd17",
+  "cluster_name" : "elasticsearch",
+  "cluster_uuid" : "lkbXufQpQuiLaE5kzVKAeA",
+  "version" : {
+    "number" : "6.1.3",
+    "build_hash" : "af51318",
+    "build_date" : "2018-01-26T18:22:55.523Z",
+    "build_snapshot" : false,
+    "lucene_version" : "7.1.0",
+    "minimum_wire_compatibility_version" : "5.6.0",
+    "minimum_index_compatibility_version" : "5.0.0"
+  },
+  "tagline" : "You Know, for Search"
+}
+```
+
+## 安装后的配置
+
+### 系统配置文件修改
+Elastic Search需要调整文件描述符大于65535、最大线程数大于4096、以及vm.max_map_count大于262144。所以修改操作系统配置文件以满足此要求。
+
+在**/etc/security/limits.conf**插入如下内容
 
 ```
-nohup ./elasticsearch & tail -f nohup.out
+* hard nofile 65536
+* soft nofile 65536
+* hard nproc  4096
+* soft nproc  4096
 ```
 
-以启动并监控启动过程
+在**/etc/sysctl.conf**中插入如下内容
+
+```
+vm.max_map_count=262144
+```
+
+然后执行**sysctl -p**，并重新登录，使配置生效。若配置成功，则可见Elastic Search启动过程中相关的警告信息将不再出现。
+
+### Elastic Search配置文件修改
+
+**以下文件位置根据安装方法不同而不同**
+**若使用RPM包方式安装，则文件位于/etc/elasticsearch**
+**若使用tar包方式安装，则文件位于解压出来的目录的conf文件夹中**
+
++ 修改cluster.name
+我们应当将集群名设置成一个能清晰地表明该集群的作用的名字，如**logging-prod**。
+
++ 修改node.name
+为每个Elastic Search节点起一个清晰易懂的名字绝不会是一件坏事。
+节点名字可以是一个自定义的名字，如**prod-data-2**，也可以使用**${HOSTNAME}**来把本机的主机名作为该节点的节点名。
+
++ 其他详细配置
+要想了解更多配置，可以参考[Elasticsearch Reference
+](https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html)的**Set up Elasticsearch**部分。
+
+### 配置自动启动
+
+如果使用RPM包方式安装，则此步可忽略。
+
+若使用tar包方式安装，则进入Elastic Search的bin目录后运行
+
+```
+./elasticsearch -d -p ../logs/elasticsearch.pid
+```
+
+使Elastic Search以daemon模式启动并监控启动过程。
 
 # 参考文献
 + [Elastic Search Installation Guide](https://www.elastic.co/guide/en/elasticsearch/reference/current/_installation.html)

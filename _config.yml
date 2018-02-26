@@ -59,6 +59,7 @@ category_map:
   Java: java
   Mainframe: mainframe
   工具: tools
+  DevOps: dev-ops
   模拟飞行: flight-sim
   其他: others
 tag_map:
