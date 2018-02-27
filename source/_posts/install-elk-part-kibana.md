@@ -63,3 +63,6 @@ sudo systemctl start kibana
 # 配置index pattern
 
 Kibana启动后，会要求配置索引，根据提示步骤配置即可。配置过程结束后，可到Discover页检查是否读到数据。
+
+# 参考文档
+[Kibana User Guide](https://www.elastic.co/guide/en/kibana/current/index.html)

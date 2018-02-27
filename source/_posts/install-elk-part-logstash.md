@@ -115,5 +115,4 @@ sudo systemctl start logstash
 ```
 
 # 参考文档
-[Logstash Reference
-](https://www.elastic.co/guide/en/logstash/current/index.html)
+[Logstash Reference](https://www.elastic.co/guide/en/logstash/current/index.html)
