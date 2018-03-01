@@ -38,7 +38,6 @@ avatar: /images/common/avatar.jpeg
 creative_commons: by-sa
 
 b2t: true
-
 scrollpercent: true
 
 scroll_to_more: false
@@ -51,9 +50,7 @@ post_copyright:
 highlight_theme: night eighties
 
 google_site_verification: j8BBcyvaAyc6nZUXy6FLTrPGQYNOgArMxNYJJYZFsmo
-
 google_analytics: UA-111547546-1
-
 bing_site_verification: DCD6E61D797D51CEBCD35C313C708277
 
 local_search:
@@ -65,4 +62,3 @@ fancybox: true
 
 pace: true
 pace_theme: pace-theme-minimal
-
