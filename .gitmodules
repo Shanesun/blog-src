@@ -4,3 +4,6 @@
 [submodule "3rd-party/pace"]
 	path = 3rd-party/pace
 	url = https://github.com/theme-next/theme-next-pace
+[submodule "themes/next-reloaded"]
+	path = themes/next-reloaded
+	url = https://github.com/theme-next/hexo-theme-next
