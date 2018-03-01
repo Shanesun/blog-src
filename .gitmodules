@@ -1,6 +1,9 @@
 [submodule "themes/next-reloaded"]
 	path = themes/next-reloaded
 	url = https://github.com/theme-next/hexo-theme-next.git
-[submodule "themes/next/source/lib/fancybox"]
-	path = themes/next/source/lib/fancybox
+[submodule "3rd-party/fancybox"]
+	path = 3rd-party/fancybox
 	url = https://github.com/theme-next/theme-next-fancybox3
+[submodule "3rd-party/pace"]
+	path = 3rd-party/pace
+	url = https://github.com/theme-next/theme-next-pace
