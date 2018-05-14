@@ -10,6 +10,8 @@ categories: 工具
 
 最近公司的一个项目需要配置JaCoCo与Jenkins的集成，将配置步骤记载于此备忘。
 
+**WORK IN PROGRESS**
+
 <!--more-->
 
 # 与Maven集成
