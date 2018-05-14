@@ -4,6 +4,7 @@ date: 2018-05-14 10:30:00
 tags:
 - Jenkins
 - JaCoCo
+- DevOps
 - Java
 categories: 工具
 ---
