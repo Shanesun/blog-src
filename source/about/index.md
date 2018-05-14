@@ -6,7 +6,9 @@ date: 2017-11-19 02:01:51
 
 这个博客主要用来当作一个学习笔记，记录平时学习开发相关的，和兴趣相关的一些知识。
 
-该博客使用 [Hexo](https://hexo.io/) 构建，主题是 [NexT.Pisces](https://github.com/iissnan/hexo-theme-next)
+该博客使用 [Hexo](https://hexo.io/) 构建，主题是 [NexT.Pisces](https://github.com/iissnan/hexo-theme-next)。
+
+如果对文章内容有任何的想法、建议、勘误，请到我的[GitHub issues](https://github.com/boris1993/boris1993.github.io/issues)或者[GitEE issues](https://gitee.com/boris1993/boris1993/issues)中提出。
 
 # 关于我
 
