@@ -5,6 +5,7 @@ tags:
 - Spring
 - Spring MVC
 - MyBatis
+- Java
 categories: Java
 ---
 
