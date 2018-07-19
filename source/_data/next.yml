@@ -10,6 +10,7 @@ keywords: "Hexo, NexT, boris1993, blog"
 
 footer:
   since: 2017
+  animated: true
 
 canonical: true
 seo: true
@@ -33,7 +34,8 @@ social_icons:
   icons_only: false
   transition: false
 
-avatar: /images/common/avatar.jpeg
+avatar: 
+  url: /images/common/avatar.jpeg
 
 creative_commons: by-sa
 
