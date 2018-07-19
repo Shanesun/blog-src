@@ -22,13 +22,13 @@
     <link itemprop="mainEntityOfPage" href="{{ config.url }}{{ url_for(post.path) }}">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="{{ theme.author }}">
-      <meta itemprop="description" content="{{ theme.signature }}">
-      <meta itemprop="image" content="{{ url_for( theme.avatar | default(theme.images + '/avatar.gif') ) }}">
+      <meta itemprop="name" content="{{ author }}">
+      <meta itemprop="description" content="{{ description }}">
+      <meta itemprop="image" content="{{ url_for( theme.avatar.url | default(theme.images + '/avatar.gif') ) }}">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="{{ config.title }}">
+      <meta itemprop="name" content="{{ title }}">
     </span>
 
     {% if not headlessPost %}
@@ -112,11 +112,7 @@
                   <span class="post-meta-item-text">{{ __('post.edited') }}</span>
                 {% endif %}
                 <time title="{{ __('post.modified') + __('symbol.colon') + full_date(post.updated) }}" itemprop="dateModified" datetime="{{ moment(post.updated).format() }}">{#
-                #}{% if date_diff -%}
-                    {{- date(post.updated) -}}
-                  {%- else -%}
-                    {{- time(post.updated) -}}
-                  {%- endif -%}
+                #}{{ date(post.updated) -}}
                 </time>
               {% endif %}
             {% endif %}
@@ -166,22 +162,13 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="{{ url_for(post.path) }}#comments" itemprop="discussionUrl">
+                {% if __('disqus') !== 'disqus' -%}
+                  <span class="post-meta-item-text">{{ __('post.comments_count') + __('symbol.colon') }}</span>
+                {% endif %}
                   <span class="post-comments-count disqus-comment-count"
                         data-disqus-identifier="{{ post.path }}" itemprop="commentCount"></span>
                 </a>
               </span>
-            {% elseif theme.hypercomments_id %}
-            <!--noindex-->
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="{{ url_for(post.path) }}#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">{{ __('post.comments_count') + __('symbol.colon') }}</span> <span class="post-comments-count hc-comment-count" data-xid="{{ post.path }}" itemprop="commentsCount"></span>
-                </a>
-              </span>
-              <!--/noindex-->
             {% elseif theme.changyan.enable and theme.changyan.appid and theme.changyan.appkey %}
               <span class="post-comments-count">
               <span class="post-meta-divider">|</span>
@@ -221,7 +208,7 @@
           {% endif %}
 
           {# LeanCould PageView #}
-          {% if theme.leancloud_visitors.enable %}
+          {% if theme.leancloud_visitors.enable or (theme.valine.enable and theme.valine.appid and theme.valine.appkey and theme.valine.visitor) %}
              <span id="{{ url_for(post.path) }}" class="leancloud_visitors" data-flag-title="{{ post.title }}">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
@@ -328,7 +315,7 @@
           {{ post.excerpt }}
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="{{ url_for(post.path) }}{% if theme.scroll_to_more %}#{{ __('post.more') }}{% endif %}" rel="contents">
+            <a class="btn" href="{{ url_for(post.path) }}{% if theme.scroll_to_more %}#more{% endif %}" rel="contents">
               {{ __('post.read_more') }} &raquo;
             </a>
           </div>
@@ -339,7 +326,7 @@
           {% if content.length > theme.auto_excerpt.length %}...{% endif %}
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="{{ url_for(post.path) }}{% if theme.scroll_to_more %}#{{ __('post.more') }}{% endif %}" rel="contents">
+            <a class="btn" href="{{ url_for(post.path) }}{% if theme.scroll_to_more %}#more{% endif %}" rel="contents">
               {{ __('post.read_more') }} &raquo;
             </a>
           </div>

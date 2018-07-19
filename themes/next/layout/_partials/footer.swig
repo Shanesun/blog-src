@@ -5,7 +5,7 @@
   <span class="with-love" id="animate">
     <i class="fa fa-{{ theme.footer.icon.name }}"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">{{ theme.footer.copyright || config.author }}</span>
+  <span class="author" itemprop="copyrightHolder">{{ theme.footer.copyright | default(author) }}</span>
 
   {% if config.symbols_count_time.total_symbols %}
     <span class="post-meta-divider">|</span>
@@ -51,7 +51,7 @@
 {% if theme.footer.theme.enable %}
   <div class="theme-info">{#
   #}{{ __('footer.theme') }} &mdash; {#
-  #}<a class="theme-link" target="_blank"{{ nofollow }} href="https://github.com/theme-next/hexo-theme-next">{#
+  #}<a class="theme-link" target="_blank"{{ nofollow }} href="https://theme-next.org">{#
     #}NexT.{{ theme.scheme }}{#
   #}</a>{% if theme.footer.theme.version %} v{{ version }}{% endif %}{#
 #}</div>
