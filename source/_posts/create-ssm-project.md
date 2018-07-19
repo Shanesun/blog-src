@@ -9,4 +9,7 @@ tags:
 categories: Java
 ---
 
-**WORK IN PROGRESS**
+最近开始着手做一个基于Spring MVC和MyBatis的项目，把搭建过程记录于此备忘
+
+<!--more-->
+

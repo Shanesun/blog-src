@@ -9,7 +9,7 @@ Maven中央仓库在国内的速度简直是感人，好在阿里云提供了Mav
 
 <!-- more -->
 
-打开Maven的用户配置文件(默认位置在 **~/.m2/settings.xml**)，在**mirrrors**段加入如下内容：
+打开Maven的用户配置文件(默认位置在 `~/.m2/settings.xml`)，在`mirrrors`段加入如下内容：
 
 ```xml
 <mirror>
@@ -25,4 +25,4 @@ Maven中央仓库在国内的速度简直是感人，好在阿里云提供了Mav
 </mirror>
 ```
 
-**[注]** 有些教程在 **mirrorOf** 字段中填写的是星号，但根据[Using Mirrors for Repositories](https://maven.apache.org/guides/mini/guide-mirror-settings.html)中 **Using A Single Repository** 一段的解释，这将会强制使用该镜像处理所有的仓库请求，而阿里云镜像并不能达到这样的效果，所以个人建议仅使用该镜像代理中央仓库的请求。
+**[注]** 有些教程在 `mirrorOf` 字段中填写的是星号，但根据[Using Mirrors for Repositories](https://maven.apache.org/guides/mini/guide-mirror-settings.html)中 `Using A Single Repository` 一段的解释，这将会强制使用该镜像处理所有的仓库请求，而阿里云镜像并不能达到这样的效果，所以个人建议仅使用该镜像代理中央仓库的请求。

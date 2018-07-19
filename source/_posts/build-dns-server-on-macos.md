@@ -25,7 +25,7 @@ $ brew install dnsmasq
 
 # 配置
 
-安装成功之后，编辑**/usr/local/etc/dnsmasq.conf**文件，修改如下内容：
+安装成功之后，编辑`/usr/local/etc/dnsmasq.conf`文件，修改如下内容：
 
 ```conf
 # Never forward plain names (without a dot or domain part)
@@ -58,6 +58,6 @@ echo "nameserver 127.0.0.1" > local
 
 # 测试
 
-在这之前，我已经在本机配置了nginx服务器，并将Aria2前端配置了域名aria.boris1993.local，所以我使用浏览器直接访问这个域名，打开成功，Q.E.D.
+在这之前，我已经在本机配置了nginx服务器，并将Aria2前端配置了域名`aria.boris1993.local`，所以我使用浏览器直接访问这个域名，打开成功，Q.E.D.
 
 **注意：nslookup貌似不会读取/etc/resolver的配置，至少在我的电脑上，nslookup aria.boris1993.local的结果是NXDOMAIN**

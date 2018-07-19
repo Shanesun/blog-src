@@ -10,7 +10,7 @@ categories: Java
 
 1. 删掉自带的ROOT/目录，然后将项目的war包重命名为ROOT.war
 
-2. 将项目正常部署(假设war包名为your_project.war)，然后修改**conf/server.xml**中的[Context Root](https://tomcat.apache.org/tomcat-8.0-doc/config/context.html)为如下内容：
+2. 将项目正常部署(假设war包名为your_project.war)，然后修改`conf/server.xml`中的[Context Root](https://tomcat.apache.org/tomcat-8.0-doc/config/context.html)为如下内容：
 
 ```xml
 <Context path="" docBase="your_project" debug="0" reloadable="true"></Context>

@@ -33,7 +33,7 @@ XMIT (nodeid.username) DSNAME('input.dataset.name') [MEMBERS(member1, member2, .
 
 TRANSMIT命令的官方手册在 [**这里**](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.1.0/com.ibm.zos.v2r1.ikjc500/transmi.htm) ，完整的TRANSMIT命令的语法在 [**这里**](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.1.0/com.ibm.zos.v2r1.ikjc500/transsyn.htm) ，参数的详细说明在 [**这里**](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.1.0/com.ibm.zos.v2r1.ikjc500/transmitcomop.htm) 。
 
-另外，根据IBM员工 [Isabel Arnold](https://www.ibm.com/developerworks/community/profiles/html/profileView.do?userid=060000AEQ2&lang=en) 的建议，在打包之前最好先创建一个 **DSORG=FB,LRECL=80,BLKSIZE=3120** 的文件供TRANSMIT用作输出文件。
+另外，根据IBM员工 [Isabel Arnold](https://www.ibm.com/developerworks/community/profiles/html/profileView.do?userid=060000AEQ2&lang=en) 的建议，在打包之前最好先创建一个 `DSORG=FB,LRECL=80,BLKSIZE=3120` 的文件供TRANSMIT用作输出文件。
 
 ## 示例
 如果我想要打包 IBMUSER.COBOL.SRC 这个PDS中的所有member，打包输出文件名为 IBMUSER.COBOL.SRC.XMIT 那么命令可以这样写：
@@ -52,7 +52,7 @@ RECEIVE命令用于解包XMIT档案。
 ```
 RECEIVE INDSN('xmit.dataset.name')
 ```
-其中 **INDSN** 为XMIT档案的文件名。
+其中 `INDSN` 为XMIT档案的文件名。
 
 ## 示例
 如果现在我在另一台主机上接收到了这个XMIT档案，那么我可以使用如下命令解包这个文件：
@@ -72,12 +72,12 @@ DA('IBMUSER.COBOL.SRC')
 ```
 来将内容解包至 IBMUSER.COBOL.SRC 中。
 
-此处需要注意的是，如果目标数据集不存在，则RECEIVE会自动创建一个同名数据集，但接下来的解包过程可能会因这个数据集的空间不够用于存放解包出来的文件而报出 ABEND **B37** 。为避免这种情况发生，建议在RECEIVE前预先创建好需要的数据集，并保证数据集的空间足够。
+此处需要注意的是，如果目标数据集不存在，则RECEIVE会自动创建一个同名数据集，但接下来的解包过程可能会因这个数据集的空间不够用于存放解包出来的文件而报出 `ABEND B37` 。为避免这种情况发生，建议在RECEIVE前预先创建好需要的数据集，并保证数据集的空间足够。
 
 在输入DA命令后，RECEIVE将会试图向指定位置解包，并且会将结果输出至终端。
 
 ## 对INMR906A消息的回复
-对**INMR906A**的消息，有如下三种回复：
+对 `INMR906A` 的消息，有如下三种回复：
 + DATASET('output.dataset.name') - 将XMIT档案解包至指定位置，可简写为DA()
 + DELETE - 删除该XMIT档案
 + END - 退出，不执行任何操作

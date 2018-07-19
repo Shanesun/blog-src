@@ -18,11 +18,11 @@ Open SSH客户端配置文件，允许你以配置项的形式，记录各个服
 
 ## 创建SSH config文件
 
-通常来说，该文件会出现在两个地方，一个是**/etc/ssh/ssh_config**，一个是**~/.ssh/config**。
+通常来说，该文件会出现在两个地方，一个是`/etc/ssh/ssh_config`，一个是`~/.ssh/config`。
 
-**/etc/ssh/ssh_config**文件通常用来定义全局范围上的SSH客户端参数，而**~/.ssh/config**则被用来定义每个用户自己的SSH客户端的配置。我们将要修改的，就是位于用户目录下的config文件。
+`/etc/ssh/ssh_config`文件通常用来定义全局范围上的SSH客户端参数，而`~/.ssh/config`则被用来定义每个用户自己的SSH客户端的配置。我们将要修改的，就是位于用户目录下的config文件。
 
-如果**~/.ssh/config**文件不存在，那么也不用着急，这是正常的，只需要执行如下命令，即可新建一个空白的config文件
+如果`~/.ssh/config`文件不存在，那么也不用着急，这是正常的，只需要执行如下命令，即可新建一个空白的config文件
 
 ```bash
 touch ~/.ssh/config
@@ -50,7 +50,7 @@ Host sample
     Identityfile ~/.ssh/id_rsa
 ```
 
-嗯，在这里，它还有了一个新名字，叫**sample**。
+嗯，在这里，它还有了一个新名字，叫`sample`。
 
 然后，我们只需要：
 

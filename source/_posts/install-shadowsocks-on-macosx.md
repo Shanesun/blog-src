@@ -31,13 +31,11 @@ brew install simple-obfs
 # 创建配置文件
 
 ```bash
-cd /etc
-sudo mkdir shadowsocks-libev
-cd shadowsocks-libev
-vim config.json
+cd /usr/local/etc
+vim shadowsocks-libev.json
 ```
 
-然后将以下内容复制到config.json，其中参数根据实际情况修改，plugin位置需要写绝对路径，路径可以通过 **which simple-obfs** 得到
+然后将以下内容复制到shadowsocks-libev.json，其中参数根据实际情况修改，plugin位置需要写绝对路径，路径可以通过 `which simple-obfs` 得到
 
 ```json
 {
@@ -60,7 +58,7 @@ vim config.json
 vim /usr/local/opt/shadowsocks-libev/homebrew.mxcl.shadowsocks-libev.plist
 ```
 
-修改为以下内容
+修改`-c`参数的值，将其设为配置文件所在的绝对路径，如`/usr/local/etc/shadowsocks-libev.json`
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -71,19 +69,17 @@ vim /usr/local/opt/shadowsocks-libev/homebrew.mxcl.shadowsocks-libev.plist
     <string>homebrew.mxcl.shadowsocks-libev</string>
     <key>ProgramArguments</key>
     <array>
-      <string>/usr/local/bin/ss-local</string>
+      <string>/usr/local/opt/shadowsocks-libev/bin/ss-local</string>
+      <string>-c</string>
+      <string>/usr/local/etc/shadowsocks-libev.json</string>
+      <string>-u</string>
     </array>
     <key>RunAtLoad</key>
     <true/>
     <key>KeepAlive</key>
     <true/>
-    <key>StandardOutPath</key>
-    <string>/tmp/shadowsocks/shadowsocks.log</string>
-    <key>StandardErrorPath</key>
-    <string>/tmp/shadowsocks/shadowsocks.err</string>
   </dict>
 </plist>
-
 ```
 
 # 添加开机自启动
@@ -124,7 +120,7 @@ brew install nginx
 
 ## 配置系统代理
 
-将系统代理的代理自动配置(Automatic Proxy Configuration)启用，URL填写**http://localhost:8080/pac/autoproxy.pac** (此处的端口号需按照你实际的 nginx 配置填写，默认为 8080；服务器路径也需要按照 PAC 文件的实际位置修改，此处的位置与上一步的配置相对应。)
+将系统代理的代理自动配置(Automatic Proxy Configuration)启用，URL填写`http://localhost:8080/pac/autoproxy.pac` (此处的端口号需按照你实际的 nginx 配置填写，默认为 8080；服务器路径也需要按照 PAC 文件的实际位置修改，此处的位置与上一步的配置相对应。)
 
 ## 检查是否成功生效
 

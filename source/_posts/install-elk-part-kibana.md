@@ -20,7 +20,7 @@ sudo rpm -ivh kibana-6.2.2-x86_64.rpm
 
 # 配置Kibana及防火墙
 
-编辑**/etc/kibana.yml**
+编辑`/etc/kibana.yml`
 
 这里比较关键的一点，是要指定Elastic Search的位置。如果Elastic Search是安装在本机，并监听默认的9200端口的话，则不需要修改该配置。
 

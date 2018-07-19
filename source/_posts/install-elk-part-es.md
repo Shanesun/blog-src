@@ -12,7 +12,7 @@ categories: DevOps
 
 # 安装JRE
 
-首先这套平台是基于Java的，所以Java运行环境当然是不能少。但因为这上面不涉及Java的开发，所以不需要装JDK，装JRE就够了，还能省下一些磁盘空间。我这里选择JRE8u161。
+首先这套平台是基于Java的，所以Java运行环境当然是不能少。但因为这上面不涉及Java的开发，所以不需要装JDK，装JRE就够了，还能省下一些磁盘空间。我这里选择`JRE8u161`。
 
 我这次选择使用RPM包安装。
 
@@ -111,9 +111,9 @@ curl http://127.0.0.1:9200
 ## 安装后的配置
 
 ### 系统配置文件修改
-Elastic Search需要调整文件描述符大于65535、最大线程数大于4096、以及vm.max_map_count大于262144。所以修改操作系统配置文件以满足此要求。
+Elastic Search需要调整文件描述符大于65535、最大线程数大于4096、以及`vm.max_map_count`大于262144。所以修改操作系统配置文件以满足此要求。
 
-在**/etc/security/limits.conf**插入如下内容
+在`/etc/security/limits.conf`插入如下内容
 
 ```
 * hard nofile 65536
@@ -122,13 +122,13 @@ Elastic Search需要调整文件描述符大于65535、最大线程数大于4096
 * soft nproc  4096
 ```
 
-在**/etc/sysctl.conf**中插入如下内容
+在`/etc/sysctl.conf`中插入如下内容
 
 ```
 vm.max_map_count=262144
 ```
 
-然后执行**sysctl -p**，并重新登录，使配置生效。若配置成功，则可见Elastic Search启动过程中相关的警告信息将不再出现。
+然后执行`sysctl -p`，并重新登录，使配置生效。若配置成功，则可见Elastic Search启动过程中相关的警告信息将不再出现。
 
 ### Elastic Search配置文件修改
 
@@ -136,12 +136,12 @@ vm.max_map_count=262144
 **若使用RPM包方式安装，则文件位于/etc/elasticsearch**
 **若使用tar包方式安装，则文件位于解压出来的目录的conf文件夹中**
 
-+ 修改cluster.name
-我们应当将集群名设置成一个能清晰地表明该集群的作用的名字，如**logging-prod**。
++ 修改`cluster.name`
+我们应当将集群名设置成一个能清晰地表明该集群的作用的名字，如`logging-prod`。
 
-+ 修改node.name
++ 修改`node.name`
 为每个Elastic Search节点起一个清晰易懂的名字绝不会是一件坏事。
-节点名字可以是一个自定义的名字，如**prod-data-2**，也可以使用**${HOSTNAME}**来把本机的主机名作为该节点的节点名。
+节点名字可以是一个自定义的名字，如`prod-data-2`，也可以使用`${HOSTNAME}`来把本机的主机名作为该节点的节点名。
 
 + 其他详细配置
 要想了解更多配置，可以参考[Elasticsearch Reference

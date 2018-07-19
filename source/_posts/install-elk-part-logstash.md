@@ -38,7 +38,7 @@ hello world
 
 ## Logstash系统配置
 
-编辑/etc/logstash/logstash.yml，修改Logstash系统级配置。
+编辑`/etc/logstash/logstash.yml`，修改Logstash系统级配置。
 
 ```YAML
 # 配置节点名，若未配置则默认取本机主机名作为节点名
@@ -73,7 +73,7 @@ output {
 
 另外，本例中还需要配置Logstash以root权限运行以读取系统日志(messages文件默认权限为600)，实际使用时需要按照实际需求配置。
 
-编辑**/etc/systemd/system/logstash.service**，修改user和group为root
+编辑`/etc/systemd/system/logstash.service`，修改user和group为root
 
 ```ini
 [Unit]
