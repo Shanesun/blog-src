@@ -1,3 +1,4 @@
+# favicon location
 favicon:
   small: /images/common/favicon-16x16.png
   medium: /images/common/favicon-32x32.png
@@ -6,10 +7,14 @@ favicon:
   android_manifest: /images/common/manifest.json
   ms_browserconfig: /images/common/browserconfig.xml
 
+# Keywords for this site
 keywords: "Hexo, NexT, boris1993, blog"
 
+# Footer setup
 footer:
+  # When the site has been set up
   since: 2017
+  # Animate the icon
   animated: true
 
 canonical: true
@@ -39,9 +44,13 @@ avatar:
 
 creative_commons: by-sa
 
+# Enable "Back to top" button
 b2t: true
+
+# Enable scroll percentage
 scrollpercent: true
 
+# Don't automatically scroll to <!-- more --> tag
 scroll_to_more: false
 
 post_copyright:
@@ -62,5 +71,6 @@ local_search:
 
 fancybox: true
 
+# Loading progress bar on the top of the page
 pace: true
 pace_theme: pace-theme-minimal
