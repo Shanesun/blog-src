@@ -74,3 +74,8 @@ fancybox: true
 # Loading progress bar on the top of the page
 pace: true
 pace_theme: pace-theme-minimal
+
+# Pangu Support
+# Dependencies: https://github.com/theme-next/theme-next-pangu
+# For more information: https://github.com/vinta/pangu.js
+pangu: true
