@@ -1,5 +1,5 @@
 ---
-title: 配置Caddy
+title: 配置Caddy作为静态网站服务器和前置代理
 date: 2018-07-19 16:42:30
 tags:
 - WebServer
