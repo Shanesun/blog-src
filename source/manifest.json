@@ -1,6 +1,12 @@
 {
   "name": "Code Life - 码农 pilot 的个人博客",
   "short_name": "Code Life",
+  "theme_color": "#222222",
+  "background_color": "#f5f7f9",
+  "display": "fullscreen",
+  "orientation": "portrait",
+  "Scope": "/",
+  "start_url": "/",
   "icons": [
     {
       "src": "/images/common/android-chrome-192x192.png",
@@ -18,9 +24,5 @@
       "type": "image/png"
     }
   ],
-  "start_url": "/",
-  "theme_color": "#222222",
-  "background_color": "#f5f7f9",
-  "orientation": "portrait",
-  "display": "standalone"
+  "splash_pages": null
 }
