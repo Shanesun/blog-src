@@ -1,5 +1,5 @@
 ---
-title: 在macOS X中安装Shadowsocks和Simple Obfs
+title: 在macOS中安装shadowsocks-libev和simple-obfs
 date: 2017-12-09 12:00:25
 tags:
 - Shadowsocks
