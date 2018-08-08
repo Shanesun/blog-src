@@ -102,4 +102,6 @@ sitemap:
 baidusitemap:
   path: baidusitemap.xml
 
+baidu_push: true
+
 #all_minifier: true
