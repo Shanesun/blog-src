@@ -14,8 +14,6 @@ keywords: "Hexo, NexT, boris1993, blog"
 footer:
   # When the site has been set up
   since: 2017
-  # Animate the icon
-  animated: true
 
 canonical: true
 seo: true
@@ -44,25 +42,32 @@ avatar:
 
 creative_commons: by-sa
 
-# Enable "Back to top" button
-b2t: true
-
-# Enable scroll percentage
-scrollpercent: true
-
 # Don't automatically scroll to <!-- more --> tag
 scroll_to_more: false
 
+codeblock:
+  # Add copy button on codeblock
+  copy_button:
+    enable: true
+    # Show text copy result
+    show_result: true
+
 post_copyright:
   enable: true
-  license: CC BY-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-sa/4.0/
+  license: <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="external nofollow" target="_blank">CC BY-SA 4.0</a>
 
 highlight_theme: night eighties
+
+# Pangu Support
+# Dependencies: https://github.com/theme-next/theme-next-pangu
+# For more information: https://github.com/vinta/pangu.js
+pangu: true
 
 google_site_verification: j8BBcyvaAyc6nZUXy6FLTrPGQYNOgArMxNYJJYZFsmo
 google_analytics: UA-111547546-1
 bing_site_verification: DCD6E61D797D51CEBCD35C313C708277
+baidu_site_verification: evFpbnKalV
+baidu_push: true
 
 local_search:
   enable: true
@@ -74,8 +79,3 @@ fancybox: true
 # Loading progress bar on the top of the page
 pace: true
 pace_theme: pace-theme-minimal
-
-# Pangu Support
-# Dependencies: https://github.com/theme-next/theme-next-pangu
-# For more information: https://github.com/vinta/pangu.js
-pangu: true
