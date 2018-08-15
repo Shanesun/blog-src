@@ -4,7 +4,7 @@ date: 2017-12-11 14:41:50
 tags:
 - Maven
 categories: 
-- Java
+- 工具
 - Maven
 ---
 Maven中央仓库在国内的速度简直是感人，好在阿里云提供了Maven中央仓库的镜像，配置方法在此记录备用。

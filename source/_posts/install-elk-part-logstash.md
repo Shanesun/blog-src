@@ -4,7 +4,9 @@ date: 2018-02-26 15:06:03
 tags:
 - ELK
 - Logstash
-categories: DevOps
+categories: 
+- 工具
+- ELK
 ---
 上回书说道，我们已经安装好了Elastic Search。那么这次，我们继续安装Logstash。
 

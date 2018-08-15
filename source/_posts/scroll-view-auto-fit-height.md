@@ -4,7 +4,9 @@ date: 2018-08-10 15:35:33
 tags:
 - 小程序
 - scroll-view
-categories: 小程序
+categories:
+- 项目记录 
+- 小程序
 ---
 根据[微信小程序scroll-view文档](https://developers.weixin.qq.com/miniprogram/dev/component/scroll-view.html)所述，`scroll-view`必须给定一个固定高度。那么如果我们想要让它自动填充剩余高度，该怎么办呢？
 

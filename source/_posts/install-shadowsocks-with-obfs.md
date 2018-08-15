@@ -4,7 +4,9 @@ date: 2017-11-29 17:10:09
 tags:
 - Shadowsocks
 - Simple Obfs
-categories: 工具
+categories: 
+- 工具
+- Shadowsocks
 ---
 以下脚本目的在于便利自己安装该工具，并不是一个成熟的版本，如要使用，本人不承担任何可能带来的后果。
 该脚本目前仅能用于Ubuntu Linux。在Ubuntu Server 17.04下测试通过。

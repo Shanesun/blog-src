@@ -3,7 +3,9 @@ title: 在macOS中搭建自己的DNS服务器
 date: 2018-05-09 17:08:59
 tags:
 - DNS Server
-categories: 工具
+categories: 
+- 工具
+- dnsmasq
 ---
 最近实验了一下配置nginx多站点，顺便也给自己跑在本机上的几个服务上了个域名(当然是直接用Hosts强行解析到127.0.0.1的......)。但是吧，用Hosts强行解析，总觉得有点别扭，所以试着在本机搭一个DNS服务器。
 

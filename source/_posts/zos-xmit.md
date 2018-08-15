@@ -7,7 +7,7 @@ tags:
 - TRANSMIT
 - XMIT
 - RECEIVE
-categories: Mainframe
+categories: 其他
 ---
 当需要从z/OS中下载一个PS文件，或者下载一个Member时，我们可以简单地使用FTP或者IND$FILE将文件下载回来，但是如果想要下载一整个PDS呢？总不能一个个地去下载吧，此时，XMIT命令就派上用场了。
 

@@ -4,7 +4,9 @@ date: 2018-02-04 16:50:31
 tags:
 - ELK
 - Elastic Search
-categories: DevOps
+categories: 
+- 工具
+- ELK
 ---
 最近搭建了一次ELK日志平台，在此记录一下安装步骤。由于本次模拟的是服务器不能连接互联网的情况，所以全部安装步骤皆使用RPM或tar包的方式安装。本文主要记录安装Elastic Search的过程。
 

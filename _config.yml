@@ -54,18 +54,19 @@ index_generator:
   
 # Category & Tag
 default_category: others
-category_map:
-  前端: front-end
-  小程序: wxapp
-  Java: java
-  数据库: database
-  Oracle: oracle
-  MySQL: mysql
-  Mainframe: mainframe
-  工具: tools
-  DevOps: dev-ops
-  模拟飞行: flight-sim
-  其他: others
+# category_map:
+#   项目记录: projects
+#   前端: front-end
+#   小程序: wxapp
+#   Java: java
+#   数据库: database
+#   Oracle: oracle
+#   MySQL: mysql
+#   Mainframe: mainframe
+#   工具: tools
+#   DevOps: dev-ops
+#   模拟飞行: flight-sim
+#   其他: others
 tag_map:
 
 # Date / Time format

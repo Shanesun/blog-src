@@ -4,7 +4,7 @@ date: 2017-12-26 10:09:29
 tags:
 - Shell
 - lsof
-categories: 工具
+categories: 其他
 ---
 记录lsof命令常见用法备忘
 

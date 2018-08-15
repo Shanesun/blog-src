@@ -7,8 +7,8 @@ tags:
 - MyBatis
 - Java
 categories: 
+- 项目记录
 - Java
-- Spring
 ---
 
 最近开始着手做一个基于Spring MVC和MyBatis的项目，把搭建过程记录于此备忘

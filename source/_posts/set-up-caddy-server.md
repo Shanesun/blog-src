@@ -4,7 +4,9 @@ date: 2018-07-19 16:42:30
 tags:
 - WebServer
 - Caddy
-categories: 工具
+categories: 
+- 工具
+- Caddy
 ---
 之前听闻有个新的Web Server，名曰Caddy，其配置简单，还默认启用HTTP/2，并且可以自动申请Let's Encrypt的HTTPS证书。试用了一番，觉得不错，便把这个博客的服务程序换成了Caddy。在这里呢，记录一下安装和配置的过程。
 

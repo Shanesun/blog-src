@@ -4,7 +4,9 @@ date: 2017-12-09 12:00:25
 tags:
 - Shadowsocks
 - Simple Obfs
-categories: 工具
+categories: 
+- 工具
+- Shadowsocks
 ---
 最近入手了一台MacBook，自然必备的工具是不能少的。安装过程也遇到了些新的问题，在此记录以备不时之需。
 

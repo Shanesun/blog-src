@@ -4,7 +4,9 @@ date: 2018-02-27 10:20:14
 tags:
 - ELK
 - Kibana
-categories: DevOps
+categories: 
+- 工具
+- ELK
 ---
 上一次我们安装好了Elastic Search和Logstash，本次我们继续安装Kibana。
 

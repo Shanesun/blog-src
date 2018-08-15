@@ -5,7 +5,9 @@ tags:
 - Caddy
 - GitHub
 - Custom domain
-categories: 其他
+categories: 
+- 工具
+- Caddy
 ---
 最近心血来潮，想给这个博客在GitHub上面的页面绑个自定义域名，结果无意中发现了一个坑。
 
