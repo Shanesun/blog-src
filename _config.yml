@@ -58,6 +58,9 @@ category_map:
   前端: front-end
   小程序: wxapp
   Java: java
+  数据库: database
+  Oracle: oracle
+  MySQL: mysql
   Mainframe: mainframe
   工具: tools
   DevOps: dev-ops

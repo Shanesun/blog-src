@@ -3,7 +3,9 @@ title: 如何将项目部署至Tomcat的根下
 date: 2018-01-12 17:27:51
 tags:
 - Tomcat
-categories: Java
+categories: 
+- Java
+- Tomcat
 ---
 
 有两种方法可以实现将项目部署到Tomcat的根下。
