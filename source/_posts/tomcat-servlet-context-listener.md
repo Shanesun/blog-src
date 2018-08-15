@@ -7,9 +7,7 @@ categories:
 - Java
 - Tomcat
 ---
-在 Servlet API 中有一个 ServletContextListener 接口，它能够监听 ServletContext 对象的生命周期，实际上就是监听 Web 应用的生命周期。
-
-当Servlet 容器启动或终止Web 应用时，会触发ServletContextEvent 事件，该事件由ServletContextListener 来处理。在 ServletContextListener 接口中定义了处理ServletContextEvent 事件的两个方法。我们可以通过实现这两个方法，来实现在`Tomcat`启动和停止时执行一定的操作。
+当`Servlet`容器启动或终止Web应用时，会触发`ServletContextEvent`事件，该事件由`ServletContextListener`来处理。在`Servlet API`中有一个`ServletContextListener`接口，接口中定义了处理`ServletContextEvent`事件的两个方法，它能够监听`ServletContext`对象的生命周期，实际上就是监听Web应用的生命周期。我们可以通过实现这两个方法，来实现在`Tomcat`启动和停止时执行一定的操作。
 
 <!-- more -->
 
