@@ -54,6 +54,28 @@ index_generator:
   
 # Category & Tag
 default_category: others
+category_map:
+  数据库: database
+  Oracle: oracle
+  MySQL: mysql
+
+  工具: tools
+  Caddy: caddy
+  ELK: elk
+  Git: git
+  Maven: maven
+  SSH: ssh
+  Shadowsocks: shadowsocks
+  Tomcat: tomcat
+  dnsmasq: dnsmasq
+
+  项目记录: projects
+  Java: java
+  小程序: wxapp
+  前端: front-end
+
+  其他: others
+
 tag_map:
 
 # Date / Time format
