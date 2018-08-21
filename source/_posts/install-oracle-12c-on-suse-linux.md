@@ -8,7 +8,7 @@ categories:
 - 数据库
 - Oracle
 ---
-本文记录根据[Oracle官方安装文档](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/ladbi/index.html)，在`openSuSE Leap 15.0`上安装`Oracle Database 12c`(以下简称`Oracle 12c`)的过程。
+最近开始学习Oracle数据库，在这里记录一下在`openSuSE Leap 15`上安装`Oracle Database 12c`的过程。
 
 本文内容目前仅仅是一个大致的安装步骤的介绍，可能会在将来持续补充完善。
 
