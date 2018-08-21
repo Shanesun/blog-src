@@ -14,7 +14,7 @@ categories: [工具, SSH]
 
 在macOS中，可以使用`XQuartz`作为X11客户端。可以到[XQuartz Releases](https://www.xquartz.org/releases/)下载安装包手动安装，也可使用`Homebrew`安装。
 
-`Homebrew`安装命令如下：
+使用`Homebrew`安装`XQuartz`的命令如下：
 
 ```bash
 $ brew cask install xquartz
