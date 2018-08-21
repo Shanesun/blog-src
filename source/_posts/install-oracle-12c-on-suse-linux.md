@@ -10,6 +10,8 @@ categories:
 ---
 本文记录根据[Oracle官方安装文档](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/ladbi/index.html)，在`openSuSE Leap 15.0`上安装`Oracle Database 12c`(以下简称`Oracle 12c`)的过程。
 
+本文内容目前仅仅是一个大致的安装步骤的介绍，可能会在将来持续补充完善。
+
 <!-- more -->
 
 # 安装前准备
@@ -80,6 +82,14 @@ X11UseLocalhost yes
 ```
 
 并在操作机上安装X11客户端，如`macOS`中的`xquartz`。
+
+### 配置hosts文件
+
+编辑hosts文件，写入本机的IP地址和机器名：
+
+```
+192.168.2.12    boris-x200
+```
 
 ## 检查用户和组
 
@@ -177,6 +187,8 @@ $ sudo chown -R oracle:oinstall /opt/oracle
 
 ## 开始安装
 
+以下截图因为X11客户端的问题，图片色彩会有失真，还请读者见谅。
+
 ### 准备X11转发
 
 首先启动`X11`客户端并完成连接配置。
@@ -214,137 +226,217 @@ $ ./runInstaller
 # 监控日志输出并等待安装程序启动
 ```
 
-### 配置用来接收安全通知的邮箱地址
+### 配置邮箱地址
 
-第一步中可以配置一个用于接收安全通知的邮箱地址，如果不想接收，则可以留空。
+第一步中可以配置一个用于接收安全通知的邮箱地址，如果不需要则可以留空。
 
-![Begin installation](/images/install-oracle-12c-on-suse-linux/begin-installation.png)
+![Configure security updates](/images/install-oracle-12c-on-suse-linux/configure-security-updates.png)
 
 ### 选择安装模式
 
-接下来选择安装模式。安装程序提供了三种安装模式：`创建并配置数据库`、`仅安装数据库软件`、`升级已有数据库`。因为这次是全新安装，并希望在安装过程中完成必要的配置，所以选择`创建并配置数据库`。
+安装程序提供了三种安装模式：创建并配置数据库、仅安装数据库软件、升级已有数据库。我们这里选择仅安装数据库软件，配置将放到安装结束后进行。
 
-![Install options](/images/install-oracle-12c-on-suse-linux/install-option.png)
+![Installation option](/images/install-oracle-12c-on-suse-linux/installation-option.png)
 
-### 选择安装类型
+### 选择如何安装数据库
 
-然后是选择安装类型，我们这里选择`Server class`。
+安装程序提供了三种安装类型，我们这次将安装一个单实例数据库。
 
-![System class](/images/install-oracle-12c-on-suse-linux/system-class.png)
+![Database installation options](/images/install-oracle-12c-on-suse-linux/database-installation-options.png)
 
-### 选择单机或集群
+### 选择要安装的版本
 
-本例中我们将安装一个单机实例，所以选择`Single instance database installation`。
-
-![Install option](/images/install-oracle-12c-on-suse-linux/install-option.png)
-
-### 选择安装方法
-
-这一步提供了两种安装方法：
-
-- 标准安装：完整安装数据库，并使用默认配置
-- 高级安装：提供更详细的安装配置功能
-  
-本例中将使用高级安装，以尽可能地涵盖安装过程的各个步骤。
-
-![Install type](/images/install-oracle-12c-on-suse-linux/install-type.png)
-
-### 选择数据库版本
-
-安装程序提供了两种版本可选：企业版和普通版。我们这里选择企业版。
+安装程序提供了两种版本可供安装：企业版和标准版。我们这里选择安装企业版。
 
 ![Database edition](/images/install-oracle-12c-on-suse-linux/database-edition.png)
 
-### 指定安装位置
+### 设定安装位置
 
-`Oracle base`指定到`/opt/oracle/app/oracle`；
+这一步中需要指定安装过程中的两个路径：
 
-`Software location`指定到`/opt/oracle/app/oracle/product/12.2.0/dbhome_1`
+- Oracle base: 指定数据库软件及其相关配置文件所存放的位置
+- Software location: 指定数据库软件的安装位置
 
-![Install location](/images/install-oracle-12c-on-suse-linux/install-location.png)
+此处需要确认该路径是否与`Software location`的路径匹配。
 
-### 设定Inventory directory
+![Installation location](/images/install-oracle-12c-on-suse-linux/installation-location.png)
 
-由于是首次安装，需要指定`Inventory directory`来存放安装过程中的元数据文件。我们这里指定到`/opt/oracle/app/oraInventory`，并指定`oinstall`组对该目录有写权限。
+### 配置Oracle组所对应的操作系统用户组
 
-![Inventory directory](/images/install-oracle-12c-on-suse-linux/inventory-directory.png)
-
-### 设定数据库使用场景
-
-安装程序提供了两种使用场景，分别对应两种使用情景。我们这里选择面向通常使用场景的`General Purpose / Trasaction Processing`。
-
-![Configuration type](/images/install-oracle-12c-on-suse-linux/configuration-type.png)
-
-### 设定数据库标识符
-
-这一步保持默认，不做修改。
-
-![Database identifiers](/images/install-oracle-12c-on-suse-linux/database-identifiers.png)
-
-### 配置数据库属性
-
-这一步中分别需要配置分配给数据库的内存空间、数据库所使用的字符集、以及是否安装演示数据库。
-
-内存空间分配页面中，保持默认配置不变。
-
-![Configuration options - memory](/images/install-oracle-12c-on-suse-linux/conf-opts-memory.png)
-
-字符集保持默认不变，即使用Unicode。
-
-![Configuration options - character sets](/images/install-oracle-12c-on-suse-linux/conf-opts-charset.png)
-
-是否安装演示数据库页面根据实际需要决定是否勾选。
-
-![Configuration options - sample schemas](/images/install-oracle-12c-on-suse-linux/conf-opts-sample-schema.png)
-
-### 选择数据库存储方式
-
-这一步可以选择使用文件系统来储存数据，或者使用`Oracle Automatic Storage Management`。我们这里使用本地文件系统，并指定数据目录为`/opt/oracle/app/oracle/oradata`。
-
-![Database storage](/images/install-oracle-12c-on-suse-linux/database-storage.png)
-
-### 数据库管理选项
-
-这一步中可以将该实例注册到`Oracle Enterprise Manager (EM)`来实现集中管理。因为我们没有`EM`，所以留空。如果使用`EM`，则根据页面提示填写。
-
-![Management options](/images/install-oracle-12c-on-suse-linux/management-options.png)
-
-### 恢复功能配置
-
-这里可以指定是否启用恢复功能，以及如果启用，恢复数据将存放在哪里。存放恢复数据的分区至少需要`25480MB`的空间。
-
-![Recovery options](/images/install-oracle-12c-on-suse-linux/recovery-options.png)
-
-### 密码设定
-
-这里可以选择分别为`SYS`、`SYSTEM`、`PDBADMIN`设定不同的密码，也可以共用同一套密码。同时安装程序会检测密码是否符合Oracle的建议。
-
-![Schema passwords](/images/install-oracle-12c-on-suse-linux/recovery-options.png)
-
-### 配置各个角色对应的用户组
-
-这里用于指定数据库中各个角色分别对应于操作系统中的哪些用户组。这里保持默认。
+这一步可以指定各个Oracle组所对应的操作系统用户组，检查并确认与上文所配置的组匹配。
 
 ![Operating system groups](/images/install-oracle-12c-on-suse-linux/os-groups.png)
 
-### 配置总结
+### 总览
 
-在这一步可以对上面的配置最后做一次检查。确认无误后点击`Install`开始安装。
+这一步可以检查前面每一步骤的配置是否正确。如检查无误则可继续。
 
 ![Summary](/images/install-oracle-12c-on-suse-linux/summary.png)
 
 ### 开始安装
 
-然后就是漫长的安装过程。
+接下来就是等待安装完成。点击`Details`按钮可以看到目前详细的进度。
 
-![Installing](/images/install-oracle-12c-on-suse-linux/installing.png)
+![Install product](/images/install-oracle-12c-on-suse-linux/install-product.png)
 
-点击`Details`可以在弹窗中查看安装过程的详细信息。
+期间需要用户以`root`权限执行脚本，根据弹窗给出的提示操作即可。
 
-![Details](/images/install-oracle-12c-on-suse-linux/installing-details.png)
+![Run script as root](/images/install-oracle-12c-on-suse-linux/run-script-as-root.png)
 
-在安装过程中，可能需要用户以`root`身份执行一些脚本，跟随安装程序提示执行即可。
+### 完成安装
 
-![Run scripts as root](/images/install-oracle-12c-on-suse-linux/run-scripts-as-root.png)
+安装成功结束后点击`Close`关闭安装程序。
 
-等待全部安装步骤完成后，`Oracle 12c`安装完成。
+# 首次启动配置
+
+## 开放防火墙相关端口
+
+如果需要使数据库可以接受来自外部的连接，则需要开放监听器所指定的端口。
+
+## 创建数据库
+
+使用`dbca`命令启动数据库配置向导(DBCA)，跟随向导创建数据库。
+
+### 选择向导类型
+
+`DBCA`首先会询问本次要进行什么操作，选择`Create a database`来创建一个数据库。
+
+![DBCA - database operation](/images/install-oracle-12c-on-suse-linux/dbca-database-operation.png)
+
+### 选择如何配置数据库
+
+`DBCA`提供两种配置方式：标准模式和高级模式。我们这里选择高级模式。
+
+![DBCA - creation mode](/images/install-oracle-12c-on-suse-linux/dbca-creation-mode.png)
+
+### 选择部署模式
+
+因为我们是要创建一个单机实例，所以`Database type`中选择`Oracle Single Instance Database`。
+
+在下方的模版选择中，我们使用`General Purpose or Transaction Processing`。
+
+![DBCA - deployment type](/images/install-oracle-12c-on-suse-linux/dbca-deployment-type.png)
+
+### 设定数据库标识符
+
+`Global database name`根据提示，需要遵循`name.domain`这样的格式，所以此处按照`SID.主机名`的方式填写。
+
+`SID`按需修改，本例中设定为`orcldb`。
+
+`Create as Container Database`保持不变。
+
+![DBCA - database identification](/images/install-oracle-12c-on-suse-linux/dbca-database-identification.png)
+
+### 配置存储设定
+
+这一步如有定制的需要则选择自定义配置，否则选择套用选定模版。
+
+![DBCA - storage option](/images/install-oracle-12c-on-suse-linux/dbca-storage-option.png)
+
+### 配置快速恢复设定
+
+在这一步按需配置快速恢复的设定。
+
+![DBCA - fast recovery option](/images/install-oracle-12c-on-suse-linux/dbca-fast-recovery-option.png)
+
+### 网络配置
+
+这一步中我们需要新建一个监听器来监听数据库的连接。
+
+选择`Create a new listener`来创建一个新的监听器，监听器名自行设定，端口保持`1521`不变。
+
+**注意如果需要使数据库可以接受来自外部的连接，则需要配置防火墙放行监听器的端口。**
+
+![DBCA - network configuration](/images/install-oracle-12c-on-suse-linux/dbca-network-configuration.png)
+
+### Data Vault设定
+
+这一步根据需要来设定是否开启`Database Vault`和`Label Security`。
+
+![DBCA - data vault option](/images/install-oracle-12c-on-suse-linux/dbca-data-vault-option.png)
+
+### 资源和属性配置
+
+这一步用于配置内存、字符集等等属性。
+
+#### Memory
+
+`Memory`页用来选择内存管理方案。
+
+![DBCA - configuration options - memory](/images/install-oracle-12c-on-suse-linux/dbca-configuration-options-memory.png)
+
+#### Sizing
+
+`Sizing`页用于配置 **块大小** 和 **最大并发连接数** 。这里需要注意，并发连接数一定要根据实际应用场景调整至适合的数值。本例由于是个人的测试环境，所以`300`完全满足这个场景的需要。
+
+![DBCA - configuration options - sizing](/images/install-oracle-12c-on-suse-linux/dbca-configuration-options-sizing.png)
+
+#### Character sets
+
+`Character sets`页用于配置数据库所使用的字符集。数据库字符集选择`AL32UTF8`来使用`Unicode`。
+
+`National character set`即国际化字符集，按需选择`UTF-16`或者`UTF-8`；
+
+`Default language`即默认语言，根据实际使用场景选择；
+
+`Default territory`即默认地区，同样根据实际使用场景选择。
+
+![DBCA - configuration options - character sets](/images/install-oracle-12c-on-suse-linux/dbca-configuration-options-charset.png)
+
+#### Connection mode
+
+`Connection mode`页配置该实例是以独立服务器模式运行还是以共享服务器模式运行。本例中是独立服务器模式。
+
+![DBCA - configuration options - connection mode](/images/install-oracle-12c-on-suse-linux/dbca-configuration-options-connmode.png)
+
+#### Sample schemas
+
+`Sample schemas`页可以选择是否安装演示数据库。
+
+![DBCA - configuration options - sample schemas](/images/install-oracle-12c-on-suse-linux/dbca-configuration-options-sample-schemas.png)
+
+全部完成后继续
+
+### 管理选项
+
+`Management options`中可以配置是否启用`Enterprise Manager`(EM)，以及可以注册到已有的`EM cloud control`中。
+
+![DBCA - management options](/images/install-oracle-12c-on-suse-linux/dbca-management-options.png)
+
+### 用户密码
+
+`User credentials`用于配置特权用户的密码，可以为`SYS`，`SYSTEM`，`PDBADMIN`分别指定密码，也可以为其指定统一的密码。
+
+![DBCA - user credentials](/images/install-oracle-12c-on-suse-linux/dbca-user-credentials.png)
+
+### 数据库创建配置
+
+`Creation option`中可以配置数据库创建过程中以及创建结束后的操作。
+
+- `Create database`勾选后即可创建这个数据库。如果需要在创建结束后运行SQL脚本，则可以在`Post DB creation scripts`中填写各个脚本的路径，配置程序会按照先后顺序执行。
+- `Save as a database template`勾选后，将会根据本次向导所设定的值，创建一个数据库模版。
+- `Generate database creation scripts`勾选后，将会根据本次向导所设定的值，生成一个数据库创建脚本。以后使用此脚本即可创建出一个一模一样的数据库。
+
+![DBCA - creation option](/images/install-oracle-12c-on-suse-linux/dbca-creation-option.png)
+
+### 总览
+
+这一步可以最后回顾前面步骤中所设定的值。如确认无误即可继续。
+
+### 开始创建
+
+在`Progress page`中可以看到当前数据库创建的进度。耐心等待数据库创建完成。
+
+![DBCA - progress page](/images/install-oracle-12c-on-suse-linux/dbca-progress-page.png)
+
+### 创建成功
+
+在创建成功后，在最后一页会再次显示一些关键的连接信息。
+
+![DBCA - finish](/images/install-oracle-12c-on-suse-linux/dbca-finish.png)
+
+# 检查数据库连通性
+
+打开适用于Oracle数据库的连接工具，比如`Oracle SQL Developer`，新建连接并填写连接信息，点击`Test`，如果`Status`为`Success`则说明以上配置全部成功，可以开始使用。
+
+![Testing connection](/images/install-oracle-12c-on-suse-linux/testing-connection.png)
